@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Comment {
     private long id;
 
     @NotNull
-    private Date date;
+    private LocalDateTime dateCreating;
 
     @NotBlank
     private String text;
