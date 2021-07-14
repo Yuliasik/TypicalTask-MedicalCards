@@ -7,8 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "comments")
@@ -20,9 +18,11 @@ public class Comment {
     private long id;
 
     @NotNull
+    @Column(name = "date_creating", nullable = false)
     private LocalDateTime dateCreating;
 
     @NotBlank
+    @Column(columnDefinition="TEXT")
     private String text;
 
     @NotNull
