@@ -25,17 +25,17 @@ public class PatientController {
         patientRepository.save(patient);
     }
 
-    @GetMapping("/patient/{pation_id}")
+    @GetMapping("/patients/{pation_id}")
     public Patient getPatientById(@PathVariable(name = "pation_id") Long pation_id){
          return patientRepository.findById(pation_id).orElse(null);
     }
 
-    @GetMapping("/patient/{pation_id}/delete")
+    @DeleteMapping("/patients/{pation_id}")
     public void deletePatientById(@PathVariable(name = "pation_id") Long pation_id){
         patientRepository.deleteById(pation_id);
     }
 
-    @GetMapping("/patient/{pation_id}/update")
+    @PostMapping("/patient/{pation_id}")
     public void updatePatientById(@RequestBody Patient patient){
         Patient oldPatient = patientRepository.findById(patient.getId()).orElse(null);
         if (oldPatient != null){

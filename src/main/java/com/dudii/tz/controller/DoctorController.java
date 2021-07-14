@@ -1,15 +1,9 @@
 package com.dudii.tz.controller;
 
-import com.dudii.tz.model.Comment;
 import com.dudii.tz.model.Doctor;
-import com.dudii.tz.repository.CommentRepository;
 import com.dudii.tz.repository.DoctorRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -26,7 +20,7 @@ public class DoctorController {
         return (List<Doctor>) doctorRepository.findAll();
     }
 
-    @GetMapping("/doctors")
+    @PostMapping("/doctors")
     public void addDoctor(@RequestBody Doctor doctor) {
         doctorRepository.save(doctor);
     }
