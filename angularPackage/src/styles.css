@@ -1,8 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/bootstrap.css";
+@font-face {
+  font-family: AcademezColonnaMT;
+  src: url(assets/fonts/14797.otf);
+}
+@font-face {
+  font-family: Monofur;
+  src: url(assets/fonts/monof56.ttf);
+}
 body{
   background:rgba(247, 255, 255, 0.816);
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: auto;
 }

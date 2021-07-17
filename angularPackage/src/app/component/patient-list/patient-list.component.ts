@@ -47,9 +47,9 @@ export class PatientListComponent implements OnInit {
     this.router.navigateByUrl(`patients/detail/${id}`)
   }
 
-  increment(): void{
-    this.counter++;
-  }
+  // increment(): void{
+  //   this.counter++;
+  // }
 
   onActivate(reference): void{
     console.log(reference)
@@ -58,8 +58,9 @@ export class PatientListComponent implements OnInit {
       this.getAllPatients();
     });
   }
-  readableDate(date: string){
-    console.log(date);
-  }
+
+  // readableDate(date: string){
+  //   console.log(date);
+  // }
 
 }

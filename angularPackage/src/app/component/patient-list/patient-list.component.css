@@ -6,14 +6,29 @@
   height: 100%;
   width: 25%;
   border: 5px solid #01234c;
-  min-width: 200px;
-  overflow: auto;
+  min-width: 250px;
+  overflow: hidden;
 }
-h2{
+.list{
+  padding-top: 3px;
+  /*padding-bottom: 1px;*/
+  font-family: AcademezColonnaMT;
   text-align: center;
+  font-size: 43px;
+  color: #01234c;
+  border-bottom: 5px solid #01234c;
+  align-content: center;
+  /*height: 63px;*/
+  height: 70px;
+  /*position: sticky;*/
 }
 .one-patient{
 }
+.patients-container{
+  overflow: auto;
+  height: calc(100% - 70px);
+}
+
 .patients{
   list-style-type: none;
   padding: 0;
