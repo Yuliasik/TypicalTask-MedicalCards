@@ -1,0 +1,52 @@
+<div class="d-flex main-container">
+  <div class="block-list-patients">
+    <h2>Patient`s List</h2>
+    <ul class="patients">
+
+      <li *ngFor="let patient of patients" (click)="goToDetail(patient.id)">
+        <a>
+          <!--        [routerLink]="['detail', patient.id]"-->
+          <div class="one-patient">
+            <div class="full-name">
+<!--              {{this.counter}}-->
+              {{patient.firstName}} {{patient.lastName}}
+              <div class="date">
+                <!--              angularDayjsService.timeAgo('2020-12-25T23:48:42-05:00')-->
+
+                <!--                {{readableDate(patient.birthday | date: 'd MMM, y')}}-->
+                {{patient.birthday | date: 'd MMMM y'}}
+
+              </div>
+            </div>
+            <div>
+              <img class="img-gender" src="assets/images/{{patient.sex.toLowerCase()}}.png" alt="image">
+            </div>
+          </div>
+        </a>
+        <!--      &lt;!&ndash;      <button class="delete" title="delete hero" (click)="delete(hero)">x</button>&ndash;&gt;-->
+      </li>
+    </ul>
+  </div>
+  <div class="block-show-patient-outlet">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </div>
+</div>
+<!--<script>-->
+<!--  function readableDate(date) {-->
+<!--    // alert(date.slice(0, 10));-->
+<!--    return date.slice(0, 10);-->
+<!--  }-->
+
+<!--  // var arrays = data.split('-');-->
+<!--  // var newDate = arrays[0] + "-"-->
+<!--  var dates = document.querySelectorAll('.date'), i;-->
+<!--  for (i in dates) {-->
+<!--    // if (dates[i].innerHTML !== undefined) {-->
+<!--      dates[i].innerHTML = readableDate(dates[i].innerHTML);-->
+<!--    // }-->
+<!--  }-->
+
+
+<!--  // document.getElementsByClassName('date').textContent = date;-->
+
+<!--</script>-->

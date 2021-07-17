@@ -1,0 +1,15 @@
+<div class="block-show-patient" *ngIf="patient">
+  <div class="header-show-patient">
+    <div class="full-name">{{patient.firstName}} {{patient.lastName}}</div>
+    <div>{{this.age}}</div>
+    <div>
+      <button class="delete-button" (click)="deletePatient()">Delete patient</button>
+    </div>
+  </div>
+  <div class="body-show-patient">
+<!--    <div class="spinner-border text-primary" role="status">-->
+<!--      <span class="sr-only"> .........Loading...</span>-->
+<!--    </div>-->
+  </div>
+
+</div>
