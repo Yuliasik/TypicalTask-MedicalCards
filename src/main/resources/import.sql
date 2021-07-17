@@ -1,13 +1,13 @@
-INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (1, 'Marie', 'Green', '2000-10-17', 'female', 'USA', 'Indiana', 'Union City');
-INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (2, 'Janette', 'Logan', '2001-09-12', 'female', 'USA', 'Georgia', 'North Carolina');
-INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (3, 'Cleo', 'Joyce', '1998-10-2', 'male', 'USA', 'Florida', 'Loper');
-INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (4, 'Jayson', 'Balfour', '1995-3-28', 'male', 'USA', 'Manitoba', 'Bloomer');
-INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (5, 'Isabel', 'Sharlene', '1990-6-4', 'female', 'USA', 'Indiana', 'Union City');
-INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (6, 'Kenny', 'Braidy', '2002-7-9', 'male', 'USA', 'Florida', 'Rush Lake');
-INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (7, 'Angie', 'Andy', '2000-8-15', 'female', 'USA', 'Indiana', 'Lancaster');
-INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (8, 'Bruce', 'Tayler', '2001-9-7', 'male', 'USA', 'Georgia', 'Richwood');
-INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (9, 'Emmy', 'Ambrosine', '1998-4-3', 'female', 'USA', 'Arizona', 'Broom Hill');
-INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (10, 'Fancy', 'Forrest', '1998-11-17', 'female', 'USA', 'West Virginia', 'Ladd');
+INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (1, 'Marie', 'Green', '2000-10-17', 'FEMALE', 'USA', 'Indiana', 'Union City');
+INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (2, 'Janette', 'Logan', '2001-09-12', 'FEMALE', 'USA', 'Georgia', 'North Carolina');
+INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (3, 'Cleo', 'Joyce', '1998-10-2', 'MALE', 'USA', 'Florida', 'Loper');
+INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (4, 'Jayson', 'Balfour', '1995-3-28', 'MALE', 'USA', 'Manitoba', 'Bloomer');
+INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (5, 'Isabel', 'Sharlene', '1990-6-4', 'FEMALE', 'USA', 'Indiana', 'Union City');
+INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (6, 'Kenny', 'Braidy', '2002-7-9', 'MALE', 'USA', 'Florida', 'Rush Lake');
+INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (7, 'Angie', 'Andy', '2000-8-15', 'FEMALE', 'USA', 'Indiana', 'Lancaster');
+INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (8, 'Bruce', 'Tayler', '2001-9-7', 'MALE', 'USA', 'Georgia', 'Richwood');
+INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (9, 'Emmy', 'Ambrosine', '1998-4-3', 'FEMALE', 'USA', 'Arizona', 'Broom Hill');
+INSERT INTO patients (id, first_name, last_name, birthday, sex, country, state, address) VALUES (10, 'Fancy', 'Forrest', '1998-11-17', 'FEMALE', 'USA', 'West Virginia', 'Ladd');
 
 INSERT INTO doctors(id, first_name, last_name) VALUES (1, 'Sheridan', 'Norris');
 INSERT INTO doctors(id, first_name, last_name) VALUES (2, 'Damian', 'Zayden');

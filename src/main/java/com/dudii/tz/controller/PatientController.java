@@ -32,6 +32,7 @@ public class PatientController {
 
     @DeleteMapping("/patients/{pation_id}")
     public void deletePatientById(@PathVariable(name = "pation_id") Long pation_id){
+//        int size = this.getPatients().size();
         patientRepository.deleteById(pation_id);
     }
 
