@@ -27,7 +27,12 @@
   min-width: 110px;
   border-left: 2px solid #01234c;
   font-size: 17px;
+  background-color: rgba(192, 201, 255, 0.197);
 }
+.button-show-patient:hover{
+  background-color: rgba(188, 202, 255, 0.333);
+}
+
 .img-show-patient{
   width: 30px;
 }
@@ -55,6 +60,7 @@
   flex-direction: row;
   /*background: #3dd5f3;*/
   margin: 10px;
+  height: 88%;
 }
 .information-show-patient{
   /*background: #20c997;*/
@@ -65,7 +71,7 @@
 }
 .comments-show-patient{
   width: 70%;
-  background: #6f42c1;
+  height: calc(99% - 10px);
 }
 .table-description{
   width: 110px;

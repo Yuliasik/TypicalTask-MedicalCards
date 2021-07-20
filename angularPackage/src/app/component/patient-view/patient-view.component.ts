@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Patient} from "../../model/patient";
 import {PatientService} from "../../service/patient-service.service";
 import * as Dayjs from "dayjs";
+import {CommentListComponent} from "../comment-list/comment-list.component";
 
 @Component({
   selector: 'app-patient-view',
@@ -14,6 +15,7 @@ export class PatientViewComponent implements OnInit {
   patient: Patient;
   age: number;
   @Output() delete: EventEmitter<any> = new EventEmitter();
+  // private commentsComponent : CommentListComponent;
 
   constructor(private patientService: PatientService,
               private router: Router,
@@ -21,10 +23,11 @@ export class PatientViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe((param) => {
+    this.route.params.subscribe(()=> {
       this.getPatient();
-      console.log(this.route);
-    })
+      // console.log(this.route);
+    });
+      // this.commentsComponent.ngOnInit();
   }
 
   getPatient(): void {
@@ -37,10 +40,7 @@ export class PatientViewComponent implements OnInit {
     });
   }
 
-
-
   // goToParent():void{
-  //   // console.log('azazaza');
   //   // this.router.navigateByUrl('/patients')
   //   this.delete.emit(666);
   // }
@@ -51,4 +51,8 @@ export class PatientViewComponent implements OnInit {
      this.delete.emit();
     });
   }
+
+  // goToComments(id: number): void{
+  //   this.router.navigateByUrl(`patients/detail/${id}/comments`)
+  // }
 }

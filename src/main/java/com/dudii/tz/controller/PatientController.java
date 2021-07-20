@@ -5,6 +5,7 @@ import com.dudii.tz.repository.PatientRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,18 +26,23 @@ public class PatientController {
         patientRepository.save(patient);
     }
 
-    @GetMapping("/patients/{pation_id}")
-    public Patient getPatientById(@PathVariable(name = "pation_id") Long pation_id){
-         return patientRepository.findById(pation_id).orElse(null);
+    @GetMapping("/patients/{patient_id}")
+    public Patient getPatientById(@PathVariable(name = "patient_id") Long patient_id){
+         return patientRepository.findById(patient_id).orElse(null);
     }
 
-    @DeleteMapping("/patients/{pation_id}")
-    public void deletePatientById(@PathVariable(name = "pation_id") Long pation_id){
+    @GetMapping("/patients/byname/{name}")
+    public List<Patient> getPatientByName(@PathVariable(name = "name") String name){
+        return patientRepository.findAllByName(name.toUpperCase(Locale.ROOT));
+    }
+
+    @DeleteMapping("/patients/{patient_id}")
+    public void deletePatientById(@PathVariable(name = "patient_id") Long patient_id){
 //        int size = this.getPatients().size();
-        patientRepository.deleteById(pation_id);
+        patientRepository.deleteById(patient_id);
     }
 
-    @PostMapping("/patient/{pation_id}")
+    @PostMapping("/patient/{patient_id}")
     public void updatePatientById(@RequestBody Patient patient){
         Patient oldPatient = patientRepository.findById(patient.getId()).orElse(null);
         if (oldPatient != null){
