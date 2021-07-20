@@ -5,8 +5,8 @@
 .block-list-patients{
   height: 100%;
   width: 25%;
-  border: 5px solid #01234c;
   min-width: 250px;
+  border: 5px solid #01234c;
   overflow: hidden;
 }
 .list{
@@ -21,8 +21,6 @@
   /*height: 63px;*/
   height: 70px;
   /*position: sticky;*/
-}
-.one-patient{
 }
 .patients-container{
   overflow: auto;

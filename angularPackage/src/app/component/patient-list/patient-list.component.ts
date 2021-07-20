@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Patient} from "../../model/patient";
 import {PatientService} from "../../service/patient-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import * as Dayjs from "dayjs";
 
 @Component({
   selector: 'app-patient-list',
@@ -11,10 +10,9 @@ import * as Dayjs from "dayjs";
 })
 export class PatientListComponent implements OnInit {
 
-  // showPatientDetails
   patients: Patient[];
 
-  counter = 0;
+  // counter = 0;
 
   constructor(private patientService: PatientService,
               private router: Router,
@@ -52,7 +50,7 @@ export class PatientListComponent implements OnInit {
   // }
 
   onActivate(reference): void{
-    console.log(reference)
+    // console.log(reference)
     reference.delete.subscribe(() => {
       // console.log(data);
       this.getAllPatients();
