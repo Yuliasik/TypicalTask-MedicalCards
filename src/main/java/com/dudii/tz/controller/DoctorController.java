@@ -1,6 +1,7 @@
 package com.dudii.tz.controller;
 
 import com.dudii.tz.model.Doctor;
+import com.dudii.tz.model.Patient;
 import com.dudii.tz.repository.DoctorRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,5 +24,10 @@ public class DoctorController {
     @PostMapping("/doctors")
     public void addDoctor(@RequestBody Doctor doctor) {
         doctorRepository.save(doctor);
+    }
+
+    @GetMapping("/doctors/{doctor_id}")
+    public Doctor getPatientById(@PathVariable(name = "doctor_id") Long doctor_id){
+        return doctorRepository.findById(doctor_id).orElse(null);
     }
 }

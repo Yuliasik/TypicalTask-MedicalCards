@@ -1,0 +1,24 @@
+.block-text{
+  font-size: 30px;
+  margin-left: 40px;
+}
+.one-doctor {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #01234c;
+  color: white;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 20px;
+  width: 180px;
+  margin-top: 10px;
+}
+.doctors{
+  list-style-type: none;
+}
+.img-doctor{
+  width: 23px;
+  margin-right: 5px;
+}

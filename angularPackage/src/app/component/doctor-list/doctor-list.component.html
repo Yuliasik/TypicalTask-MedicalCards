@@ -1,0 +1,21 @@
+<div class="block-doctors">
+  <div class="add-doctors">
+
+  </div>
+  <div class="block-doctors-list">
+    <div class="block-text">Doctors:</div>
+    <ul class="doctors">
+      <li *ngFor="let doctor of doctors">
+          <div class="one-doctor">
+            <div class="full-name">
+              {{doctor.firstName}} {{doctor.lastName}}
+            </div>
+            <div>
+              <img class="img-doctor" src="assets/images/stethoscope.png" alt="image">
+            </div>
+          </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
