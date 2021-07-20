@@ -29,4 +29,8 @@ export class CommentService {
     return this.http.put(`${this.patientsUrl}/${id}/comments`, comment);
   }
 
+  public getAvailableId(): Observable<number>{
+    return this.http.get<number>(`${this.patientsUrl}/comments/available_id`);
+  }
+
 }

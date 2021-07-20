@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChange, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges} from '@angular/core';
 import {Comment} from "../../model/comment";
 import {ActivatedRoute} from "@angular/router";
 import {CommentService} from "../../service/comment-service.service";
@@ -12,8 +12,10 @@ import {DoctorService} from "../../service/doctor-service.service";
 })
 export class CommentHandlerComponent implements OnInit {
 
+  @Output() save: EventEmitter<any> = new EventEmitter();
   @Input() comment: Comment = new Comment();
   doctors : Doctor[] = [];
+  isSaveDisabled: boolean = true;
   // selectedDoctor: Doctor;
 
   constructor(private commentService: CommentService,
@@ -43,7 +45,7 @@ export class CommentHandlerComponent implements OnInit {
 
   async saveComment(){
     // this.comment.doctor.id =
-    this.comment.doctor = this.doctorService.getDoctor(this.comment.doctor.id);
+
     // this.comment.doctor.firstName = "asdsad";
     // console.log(this.comment.id);
     if (this.comment.id){
@@ -52,6 +54,7 @@ export class CommentHandlerComponent implements OnInit {
         console.log(this.comment)
       });
     }else {
+      this.save.emit(this.comment);
       this.comment.patient.id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
       await this.commentService.addComment(this.comment, this.comment.patient.id)
         .subscribe(data => {
@@ -60,10 +63,27 @@ export class CommentHandlerComponent implements OnInit {
     }
     // this.comment = new Comment();
     // this.ngOnInit();
+    // this.isSaveDisabled = true;
     this.cancelComment();
   }
 
   cancelComment(){
     this.comment = new Comment();
+    this.isSaveDisabled = true;
   }
+
+  changeDoctor(){
+    this.doctorService.getDoctor(this.comment.doctor.id).subscribe((data)=>
+      this.comment.doctor = data
+    );
+  }
+
+  changeForm(){
+    if (this.comment.text && this.comment.doctor.id){
+      this.isSaveDisabled = false;
+    }else {
+      this.isSaveDisabled = true;
+    }
+  }
+
 }

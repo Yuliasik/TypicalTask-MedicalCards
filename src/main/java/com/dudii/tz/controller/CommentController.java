@@ -43,17 +43,11 @@ public class CommentController {
     }
 
     @PutMapping("patients/detail/{patient_id}/comments")
-    public void updateCommentById(@RequestBody Comment comment
-//            , @Param("patient_id") Long patient_id
-    ){
-        System.out.println("upadate!");
-        System.out.println(comment);
-//        System.out.println(patient_id);
-        Comment oldComment = commentRepository.findById(comment.getId()).orElse(null);
+    public void updateCommentById(@RequestBody Comment comment){
+       Comment oldComment = commentRepository.findById(comment.getId()).orElse(null);
         if(oldComment != null){
             oldComment.setDoctor(comment.getDoctor());
             oldComment.setText(comment.getText());
-//            oldComment.setPatient(patientRepository.findById(patient_id).get());
             commentRepository.save(oldComment);
         }
     }
@@ -62,5 +56,11 @@ public class CommentController {
     public List<Comment> getAllByPatientId (@PathVariable(name = "patient_id") Long patient_id){
         return commentRepository.getAllByPatientId(patient_id);
     }
+
+    @GetMapping("patients/detail/comments/available_id")
+    public Long getAvailableId (){
+        return commentRepository.findMaxId() + 1;
+    }
+
 
 }

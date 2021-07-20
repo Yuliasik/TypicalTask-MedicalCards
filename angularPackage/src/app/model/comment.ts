@@ -5,7 +5,7 @@ export class Comment {
   id: number;
   text: string;
   dateCreating: Date;
-  doctor: Observable<Doctor>;
+  doctor: Doctor;
   patient: Patient;
 
   constructor() {

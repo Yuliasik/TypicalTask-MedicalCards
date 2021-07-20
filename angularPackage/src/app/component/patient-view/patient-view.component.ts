@@ -25,9 +25,7 @@ export class PatientViewComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(()=> {
       this.getPatient();
-      // console.log(this.route);
     });
-      // this.commentsComponent.ngOnInit();
   }
 
   getPatient(): void {

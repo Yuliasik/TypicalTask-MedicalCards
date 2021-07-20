@@ -1,41 +1,34 @@
 <div class="window-comment">
-  <!--  *ngIf="comment"-->
-
-  <!--  {{comment.text}}-->
-  <!--    <input [ngModel]='comment.text'>-->
-
-<!--  <form class="example-form">-->
-    <!--    <mat-form-field class="example-full-width" appearance="fill">-->
-    <!--      <mat-label>Leave a comment</mat-label>-->
-    <!--      <textarea [(ngModel)]='comment.text'></textarea>-->
-    <div class="comment">
-      <div class="block-comment-textarea">
-    <textarea class="comment-textarea" [value]="comment.text" placeholder="Write a comment"
-              (input)="comment.text = $event.target.value;" name="text-of-comment" required>
+  <div class="comment">
+    <div class="block-comment-textarea">
+    <textarea class="comment-textarea" placeholder="Write a comment" name="text-of-comment"
+              (change)="changeForm()"
+              (input)="comment.text = $event.target.value; changeForm()"
+              [value]="comment.text">
     </textarea>
+    </div>
+    <div class="block-comment-select">
+      <div class="block-comment-select-with-name">
+        <select class="comment-select" name="doctor-of-comment"
+                (change)="changeDoctor(); changeForm()"
+                [(ngModel)]="this.comment.doctor.id"
+                *ngIf="doctors.length">
+          <option value="" disabled selected>Choose a doctor</option>
+          <option *ngFor='let doctor of doctors' [value]='doctor.id'>
+            Dr. {{doctor.firstName}} {{doctor.lastName}}
+          </option>
+        </select>
       </div>
-      <div class="block-comment-select">
-        <div class="block-comment-select-with-name">
-          <select class="comment-select" [(ngModel)]="this.comment.doctor.id" required>
-            *ngIf="doctors.length" name="doctor-of-comment">
-            <option value="" disabled selected>Choose a doctor</option>
-            <option *ngFor='let doctor of doctors' [value]='doctor.id'>
-              Dr. {{doctor.firstName}} {{doctor.lastName}}
-            </option>
-          </select>
-        </div>
-        <!--  </div>-->
-        <div class="block-submit-comment-button">
-          <button class="submit-comment-button" (click)="cancelComment()">
-            Cancel
-            <img class="img-comment" src="assets/images/cancel.png">
-          </button>
-          <button class="submit-comment-button" (click)="saveComment()">
-            Save
-            <img class="img-comment" src="assets/images/dm.png">
-          </button>
-        </div>
+      <div class="block-submit-comment-button">
+        <button class="submit-comment-button" (click)="cancelComment()">
+          Cancel
+          <img class="img-comment" src="assets/images/cancel.png">
+        </button>
+        <button class="submit-comment-button" [disabled]="isSaveDisabled" (click)="saveComment()">
+          Save
+          <img class="img-comment" src="assets/images/dm.png">
+        </button>
       </div>
     </div>
-<!--  </form>-->
+  </div>
 </div>
