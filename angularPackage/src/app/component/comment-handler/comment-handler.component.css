@@ -1,15 +1,7 @@
-.window-comment {
-  /*background: #20c997;*/
-  /*border: 2px solid #01234c;*/
-
-  /*align-items: center;*/
-  /*padding: 10px;*/
+.block-comment-textarea {
+  width: calc(100% - 210px);
 }
 
-/*.block-comment-textarea {*/
-/*  width: 290px;*/
-/*  background: #20c997;*/
-/*}*/
 .comment {
   display: flex;
   flex-direction: row;
@@ -17,25 +9,20 @@
 }
 
 .comment-textarea {
-  /*margin-left: 13px;*/
   border-radius: 10px;
   border: 2px solid #0a53be;
   background: snow;
   box-shadow: 1px 1px 1px #0a53be;
   height: 85px;
-  width: 500px;
+  width: 100%;
   font-size: 15px;
   padding: 5px;
 }
 
 .block-comment-select {
-  /*padding-top: 10px;*/
-  /*width: 210px;*/
-  /*background: #20c997;*/
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*background: #20c997;*/
   padding-left: 5px;
 }
 
