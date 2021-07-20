@@ -1,8 +1,32 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Comment} from "../model/comment";
 
 @Injectable()
-export class CommentServiceService {
+export class CommentService {
 
-  constructor() { }
+  private patientsUrl: string;
+  // private commentUrl: string;
+
+  constructor(private http: HttpClient) {
+    this.patientsUrl = 'http://localhost:9091/patients/detail';
+    // this.commentUrl = 'http://localhost:9091/comments';
+  }
+
+  public getCommentByPatientId(id: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.patientsUrl}/${id}/comments`);
+  }
+
+  public addComment(comment: Comment, id: number) {
+    console.log("111111");
+    console.log(comment);
+    console.log(`${this.patientsUrl}/${id}/comments`);
+    return this.http.post(`${this.patientsUrl}/${id}/comments`, comment);
+  }
+
+  public updateComment(comment: Comment, id: number) {
+    return this.http.put(`${this.patientsUrl}/${id}/comments`, comment);
+  }
 
 }

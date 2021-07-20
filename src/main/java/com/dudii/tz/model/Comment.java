@@ -2,6 +2,7 @@ package com.dudii.tz.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -15,7 +16,9 @@ import java.util.Objects;
 //@Data
 public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name="kaugen" , strategy="increment")
+    @GeneratedValue(generator="kaugen")
     private long id;
 
     @NotNull

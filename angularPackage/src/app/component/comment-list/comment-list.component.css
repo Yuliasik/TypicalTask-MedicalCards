@@ -1,0 +1,41 @@
+.block-list-comments{
+  padding: 1px 15px 1px 15px;
+  height: 100%;
+  background: rgba(120, 178, 244, 0.272);
+  border: 2px solid #01234c;
+  /*margin-bottom: 10px;*/
+}
+.all-common-information-about-comment{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bold;
+}
+.list-comments{
+  font-family: Monofur;
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 3px;
+}
+.button-comment{
+  background: none;
+}
+.img-comment{
+  width: 20px;
+}
+.one-comment{
+  padding: 10px;
+  margin-bottom: 20px;
+  background: ghostwhite;
+  /*background: rgba(147, 197, 255, 0.231);*/
+  border: 2px dashed #FF5E94;
+}
+.comments{
+  height: calc(100% - 175px);
+  list-style-type: none;
+  padding: 10px;
+  overflow-y: auto;
+  /*background: #0dcaf0;*/
+  border: 2px solid #01234c;
+}
+
