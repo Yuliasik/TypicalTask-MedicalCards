@@ -50,16 +50,12 @@ export class CommentHandlerComponent implements OnInit {
     // console.log(this.comment.id);
     if (this.comment.id){
       await this.commentService.updateComment(this.comment, this.comment.patient.id)
-        .subscribe(data => {
-        // console.log(this.comment)
-      });
+        .subscribe(data => {});
     }else {
       this.save.emit(this.comment);
       this.comment.patient.id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
       await this.commentService.addComment(this.comment, this.comment.patient.id)
-        .subscribe(() => {
-          // console.log(this.comment);
-        });
+        .subscribe(() => {});
     }
     // this.comment = new Comment();
     // this.ngOnInit();
@@ -79,7 +75,7 @@ export class CommentHandlerComponent implements OnInit {
   }
 
   changeForm(){
-    if (this.comment.text && this.comment.doctor.id){
+    if (!this.comment.text.match(/^\s*$/) && this.comment.doctor.id){
       this.isSaveDisabled = false;
     }else {
       this.isSaveDisabled = true;

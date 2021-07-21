@@ -1,3 +1,9 @@
+.block-doctor {
+  /*background: #3dd5f3;*/
+  height: 100%;
+  display: flex;
+  flex-direction:column;
+}
 .block-list-comments{
   padding: 1px 15px 1px 15px;
   height: 100%;
