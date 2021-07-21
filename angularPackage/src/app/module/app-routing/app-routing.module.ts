@@ -5,6 +5,7 @@ import {PatientListComponent} from "../../component/patient-list/patient-list.co
 import {PatientViewComponent} from "../../component/patient-view/patient-view.component";
 import {CommentListComponent} from "../../component/comment-list/comment-list.component";
 import {DoctorListComponent} from "../../component/doctor-list/doctor-list.component";
+import {DoctorAddComponent} from "../../component/doctor-add/doctor-add.component";
 
 // const firstPatient = '/patients/detail/1';
 
@@ -14,7 +15,7 @@ const routes: Routes = [
   {path: 'patients', component: PatientListComponent},
   {path: 'patients/detail/:id', component: PatientViewComponent},
   // {path: 'patients/detail/:id/comments', component: CommentListComponent}
-  {path: 'doctors', component: DoctorListComponent }
+  {path: 'doctors', component: DoctorListComponent}
 ];
 
 @NgModule({
