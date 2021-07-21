@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Doctor} from "../model/doctor";
 import {Patient} from "../model/patient";
 
 @Injectable()
-export class DoctorService{
+export class DoctorService {
 
   private doctorsUrl: string;
 
@@ -16,9 +16,13 @@ export class DoctorService{
   public findAllDoctors(): Observable<Doctor[]> {
     return this.http.get<Doctor[]>(this.doctorsUrl);
   }
+
   public getDoctor(id: number): Observable<Doctor> {
     return this.http.get<Doctor>(`${this.doctorsUrl}/${id}`);
   }
 
+  public addNewDoctor(doctor: Doctor): void {
+    this.http.post<Doctor>(this.doctorsUrl, doctor);
+  }
 
 }

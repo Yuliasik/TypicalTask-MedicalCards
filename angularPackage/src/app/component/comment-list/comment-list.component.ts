@@ -27,7 +27,7 @@ export class CommentListComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.commentService.getCommentByPatientId(id).subscribe(data => {
       this.comments = data;
-      console.log(this.comments);
+      // console.log(this.comments);
       // this.router.navigateByUrl(`patients/detail/${id}`)
     });
   }

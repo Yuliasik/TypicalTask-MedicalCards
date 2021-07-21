@@ -34,13 +34,13 @@ export class CommentHandlerComponent implements OnInit {
   findAllDoctors(): void {
     this.doctorService.findAllDoctors().subscribe(data => {
       this.doctors = data;
-      console.log(this.doctors);
+      // console.log(this.doctors);
     });
   }
 
   ngOnChanges(changes: SimpleChanges ){
     this.comment = changes.comment.currentValue;
-    console.log(changes.comment);
+    // console.log(changes.comment);
   }
 
   async saveComment(){
@@ -51,14 +51,14 @@ export class CommentHandlerComponent implements OnInit {
     if (this.comment.id){
       await this.commentService.updateComment(this.comment, this.comment.patient.id)
         .subscribe(data => {
-        console.log(this.comment)
+        // console.log(this.comment)
       });
     }else {
       this.save.emit(this.comment);
       this.comment.patient.id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
       await this.commentService.addComment(this.comment, this.comment.patient.id)
-        .subscribe(data => {
-          console.log(this.comment)
+        .subscribe(() => {
+          // console.log(this.comment);
         });
     }
     // this.comment = new Comment();

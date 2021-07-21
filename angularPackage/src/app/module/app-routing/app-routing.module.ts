@@ -6,16 +6,13 @@ import {PatientViewComponent} from "../../component/patient-view/patient-view.co
 import {CommentListComponent} from "../../component/comment-list/comment-list.component";
 import {DoctorListComponent} from "../../component/doctor-list/doctor-list.component";
 
+// const firstPatient = '/patients/detail/1';
+
 const routes: Routes = [
   {path: '', redirectTo: '/patients', pathMatch: 'full'},
-  {
-    path: 'patients', component: PatientListComponent,
-    children: [{path: 'detail/:id', component: PatientViewComponent},
-      {path: 'doctors', component: DoctorListComponent }
-    ]
-      // children:[{path: 'comments', component: CommentListComponent}]}]
-    // children: [{path: 'detail/:id', component: PatientViewComponent}]
-  },
+  // {path: '**', redirectTo: '/doctors', pathMatch: 'full'},
+  {path: 'patients', component: PatientListComponent},
+  {path: 'patients/detail/:id', component: PatientViewComponent},
   // {path: 'patients/detail/:id/comments', component: CommentListComponent}
   {path: 'doctors', component: DoctorListComponent }
 ];

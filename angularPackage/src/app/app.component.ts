@@ -15,4 +15,6 @@ export class AppComponent {
   constructor() {
     this.title = 'MedicalCards';
   }
+
+
 }

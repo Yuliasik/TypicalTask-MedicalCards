@@ -27,7 +27,7 @@ public class DoctorController {
     }
 
     @GetMapping("/doctors/{doctor_id}")
-    public Doctor getPatientById(@PathVariable(name = "doctor_id") Long doctor_id){
+    public Doctor getDoctorById(@PathVariable(name = "doctor_id") Long doctor_id){
         return doctorRepository.findById(doctor_id).orElse(null);
     }
 }

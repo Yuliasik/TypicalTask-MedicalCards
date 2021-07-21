@@ -4,6 +4,7 @@ import {Patient} from "../../model/patient";
 import {PatientService} from "../../service/patient-service.service";
 import * as Dayjs from "dayjs";
 import {CommentListComponent} from "../comment-list/comment-list.component";
+import {DeletingService} from "../../service/deleting-service.service";
 
 @Component({
   selector: 'app-patient-view',
@@ -19,7 +20,8 @@ export class PatientViewComponent implements OnInit {
 
   constructor(private patientService: PatientService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private deletingService: DeletingService) {
   }
 
   ngOnInit() {
@@ -45,9 +47,11 @@ export class PatientViewComponent implements OnInit {
 
   deletePatient(): void {
     // const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    this.patientService.deletePatient(this.patient.id).subscribe(() => {
-     this.delete.emit();
-    });
+    // this.patientService.deletePatient(this.patient.id).subscribe(() => {
+    //  this.delete.emit();
+    // });
+    this.deletingService.setPatient(this.patient.id);
+    this.router.navigate(['patients']);
   }
 
   // goToComments(id: number): void{

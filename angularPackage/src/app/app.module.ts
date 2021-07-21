@@ -20,6 +20,9 @@ import { CommentHandlerComponent } from './component/comment-handler/comment-han
 import { DoctorListComponent } from './component/doctor-list/doctor-list.component';
 import {DoctorService} from "./service/doctor-service.service";
 import {FormsModule} from "@angular/forms";
+import { DoctorAddComponent } from './component/doctor-add/doctor-add.component';
+import {DeletingService} from "./service/deleting-service.service";
+
 // import {MatFormFieldModule} from "@angular/material";
 
 declare global {
@@ -35,6 +38,7 @@ declare global {
     PatientSearchComponent,
     CommentHandlerComponent,
     DoctorListComponent,
+    DoctorAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,7 @@ declare global {
     // MatPaginatorModule
 
   ],
-  providers: [PatientService, CommentService, DoctorService],
+  providers: [PatientService, CommentService, DoctorService, DeletingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

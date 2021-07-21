@@ -1,10 +1,10 @@
-.main-container{
-  height: calc(100% - 100px);
-  overflow: hidden;
-}
+/*.main-container{*/
+/*  height: calc(100% - 100px);*/
+/*  overflow: hidden;*/
+/*}*/
 .block-list-patients{
   height: 100%;
-  width: 25%;
+  width: 100%;
   min-width: 250px;
   border: 5px solid #01234c;
   overflow: hidden;
