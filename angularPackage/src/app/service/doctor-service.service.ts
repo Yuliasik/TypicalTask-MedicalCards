@@ -21,8 +21,8 @@ export class DoctorService {
     return this.http.get<Doctor>(`${this.doctorsUrl}/${id}`);
   }
 
-  public addNewDoctor(doctor: Doctor): void {
-    this.http.post<Doctor>(this.doctorsUrl, doctor);
+  public addNewDoctor(doctor: Doctor) {
+    return this.http.post(`${this.doctorsUrl}`, doctor);
   }
 
 }

@@ -23,6 +23,7 @@ public class DoctorController {
 
     @PostMapping("/doctors")
     public void addDoctor(@RequestBody Doctor doctor) {
+        System.out.println(doctor);
         doctorRepository.save(doctor);
     }
 

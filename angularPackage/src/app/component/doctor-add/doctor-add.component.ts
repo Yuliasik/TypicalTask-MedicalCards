@@ -14,6 +14,8 @@ export class DoctorAddComponent implements OnInit {
   @Input() doctor: Doctor = new Doctor();
   isSaveDisabled: boolean = true;
 
+  titleSave: string;
+
   constructor(private doctorService: DoctorService,
               private router: Router,
               private route: ActivatedRoute) {
@@ -23,8 +25,8 @@ export class DoctorAddComponent implements OnInit {
     this.cancelDoctor();
   }
 
-  async addNewDoctor() {
-    await this.doctorService.addNewDoctor(this.doctor);
+  addNewDoctor() {
+    // await this.doctorService.addNewDoctor(this.doctor);
     this.save.emit(this.doctor);
     this.cancelDoctor();
   }
@@ -32,13 +34,16 @@ export class DoctorAddComponent implements OnInit {
   cancelDoctor() {
     this.doctor = new Doctor();
     this.isSaveDisabled = true;
+    this.titleSave = 'Not all fields valid or inputted';
   }
 
   changeForm() {
-    if (!this.doctor.firstName.match(/^\s*$/) && !this.doctor.lastName.match(/^\s*$/)) {
+    if (this.doctor.firstName.match(/^[A-Z][a-z]+(-[A-Z][a-z]+)?$/) && this.doctor.lastName.match(/^[A-Z][a-z]+(-[A-Z][a-z]+)?$/)) {
       this.isSaveDisabled = false;
+      this.titleSave = 'Save doctor';
     } else {
       this.isSaveDisabled = true;
+      this.titleSave = 'Not all fields valid or inputted';
     }
   }
 }
