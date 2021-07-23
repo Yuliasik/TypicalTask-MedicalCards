@@ -7,7 +7,7 @@
           <div>{{comment.dateCreating | date: 'd-MM-y HH:mm'}}</div>
           <div>Dr. {{comment.doctor.firstName}} {{comment.doctor.lastName}}</div>
           <div class="buttons-comment">
-            <button class="button-comment" (click)="commentEdit=comment">
+            <button class="button-comment" (click)="commentEdit=comment" title="Edit comment">
               <img class="img-comment" src="assets/images/edit.png"><br>
             </button>
           </div>

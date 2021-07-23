@@ -7,7 +7,7 @@
   <div class="search-block-result" [style.display]="isVisible ? 'block' : 'none'">
     <ul class="search-list-result">
       <li *ngFor="let patient of patients$ | async">
-        <a routerLink="/patients/detail/{{patient.id}}" >
+        <a routerLink="/patients/detail/{{patient.id}}">
           {{patient.firstName}}  {{patient.lastName}}
         </a>
       </li>

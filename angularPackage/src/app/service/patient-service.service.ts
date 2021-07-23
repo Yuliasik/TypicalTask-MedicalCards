@@ -27,14 +27,10 @@ export class PatientService {
     return this.http.delete(`${this.patientsUrl}/${id}`);
   }
 
-  /* GET heroes whose name contains search term */
-  // public searchPatient(term: string): Observable<Patient[]> {
-  //   console.log(term);
-  //   if (!term.trim()) {
-  //   //   if not search term, return empty hero array.
-  //     return of([]);
-  //   }
-  // }
+  public addNewPatient(patient: Patient): void{
+    this.http.post<Patient>(`${this.patientsUrl}`, patient);
+  }
+
   searchPatient(term: string): Observable<Patient[]> {
     console.log('term='+term);
     if (!term.trim()) {

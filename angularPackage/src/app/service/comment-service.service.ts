@@ -19,9 +19,6 @@ export class CommentService {
   }
 
   public addComment(comment: Comment, id: number) {
-    console.log("111111");
-    console.log(comment);
-    console.log(`${this.patientsUrl}/${id}/comments`);
     return this.http.post(`${this.patientsUrl}/${id}/comments`, comment);
   }
 

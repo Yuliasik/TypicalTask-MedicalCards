@@ -20,11 +20,14 @@
         </select>
       </div>
       <div class="block-submit-comment-button">
-        <button class="submit-comment-button" (click)="cancelComment()">
+        <button class="submit-comment-button" title="Clear form" (click)="cancelComment()">
           Cancel
           <img class="img-comment" src="assets/images/cancel.png">
         </button>
-        <button class="submit-comment-button" [disabled]="isSaveDisabled" (click)="saveComment()">
+        <button class="submit-comment-button"
+                [title]="titleSave"
+                [disabled]="isSaveDisabled"
+                (click)="saveComment()">
           Save
           <img class="img-comment" src="assets/images/dm.png">
         </button>

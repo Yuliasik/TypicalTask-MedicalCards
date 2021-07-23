@@ -16,7 +16,7 @@ export class CommentHandlerComponent implements OnInit {
   @Input() comment: Comment = new Comment();
   doctors : Doctor[] = [];
   isSaveDisabled: boolean = true;
-  // selectedDoctor: Doctor;
+  titleSave: string;
 
   constructor(private commentService: CommentService,
               private doctorService: DoctorService,
@@ -66,6 +66,8 @@ export class CommentHandlerComponent implements OnInit {
   cancelComment(){
     this.comment = new Comment();
     this.isSaveDisabled = true;
+    this.titleSave = 'Not all fields valid or inputted';
+
   }
 
   changeDoctor(){
@@ -77,8 +79,10 @@ export class CommentHandlerComponent implements OnInit {
   changeForm(){
     if (!this.comment.text.match(/^\s*$/) && this.comment.doctor.id){
       this.isSaveDisabled = false;
+      this.titleSave = 'Save doctor';
     }else {
       this.isSaveDisabled = true;
+      this.titleSave = 'Not all fields valid or inputted';
     }
   }
 

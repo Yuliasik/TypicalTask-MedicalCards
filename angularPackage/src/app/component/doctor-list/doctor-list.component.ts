@@ -32,7 +32,7 @@ export class DoctorListComponent implements OnInit {
   }
 
   save(doctorToAdd){
-    //get last id
     this.doctors.push(doctorToAdd);
+    this.doctorService.addNewDoctor(doctorToAdd).subscribe(()=>{});
   }
 }

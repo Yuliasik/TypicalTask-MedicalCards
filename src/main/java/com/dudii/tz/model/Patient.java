@@ -1,6 +1,7 @@
 package com.dudii.tz.model;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -16,7 +17,9 @@ import java.util.Objects;
 //@Data
 public class Patient {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name="kaugen" , strategy="increment")
+    @GeneratedValue(generator="kaugen")
     private long id;
 
     @Pattern(regexp = "[A-Z][a-z]+(-[A-Z][a-z]+)?",
