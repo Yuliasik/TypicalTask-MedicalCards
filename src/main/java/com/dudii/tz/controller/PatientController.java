@@ -42,8 +42,9 @@ public class PatientController {
         patientRepository.deleteById(patient_id);
     }
 
-    @PostMapping("/patient/{patient_id}")
+    @PutMapping("/patients")
     public void updatePatientById(@RequestBody Patient patient){
+        System.out.println(patient);
         Patient oldPatient = patientRepository.findById(patient.getId()).orElse(null);
         if (oldPatient != null){
             oldPatient.setFirstName(patient.getFirstName());

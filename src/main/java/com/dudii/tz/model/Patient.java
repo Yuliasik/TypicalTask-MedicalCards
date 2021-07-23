@@ -40,12 +40,12 @@ public class Patient {
     private Sex sex;
 
     @NotBlank
-    @Pattern(regexp = "[A-Z][a-z]+([\\s-][A-Z][a-z]+)?",
+    @Pattern(regexp = "[A-Z](([A-Z]+)|([a-z])+)([ -][A-Z](([A-Z]+)|([a-z])+))*",
             message = "Must start with a capital letter followed by one or more lowercase letters")
     private String country;
 
     @NotBlank
-    @Pattern(regexp = "[A-Z][a-z]+([\\s-][A-Z][a-z]+)?",
+    @Pattern(regexp = "[A-Z](([A-Z]+)|([a-z])+)([ -][A-Z](([A-Z]+)|([a-z])+))*",
             message = "Must start with a capital letter followed by one or more lowercase letters")
     private String state;
 

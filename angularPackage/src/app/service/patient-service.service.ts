@@ -27,8 +27,12 @@ export class PatientService {
     return this.http.delete(`${this.patientsUrl}/${id}`);
   }
 
-  public addNewPatient(patient: Patient): void{
-    this.http.post<Patient>(`${this.patientsUrl}`, patient);
+  public addNewPatient(patient: Patient){
+    return this.http.post<Patient>(`${this.patientsUrl}`, patient);
+  }
+
+  public updatePatient(patient: Patient){
+   return this.http.put<Patient>(`${this.patientsUrl}`, patient);
   }
 
   searchPatient(term: string): Observable<Patient[]> {

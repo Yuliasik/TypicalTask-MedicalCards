@@ -6,8 +6,8 @@
       <div>
         <button class="button-show-patient" title="Update patient"
                 (click)="showUpdateForm = !showUpdateForm">
-          <img class="img-show-patient" src="assets/images/edit.png"><br>
-          Update
+          <img class="img-show-patient" src="assets/images/{{showUpdateForm ? 'back' : 'edit'}}.png"><br>
+          {{showUpdateForm ? 'Back' : 'Edit'}}
         </button>
         <button class="button-show-patient" title="Delete patient" (click)="deletePatient()">
           <img class="img-show-patient" src="assets/images/delete.png"><br>
@@ -49,7 +49,7 @@
     </div>
   </div>
   <ng-template #somename>
-    <app-patient-form (savePatient)="updatePatient($event)" [patient]="patient"></app-patient-form>
+    <app-patient-form (savePatient)="updatePatient($event)" [previousPatient]="patient"></app-patient-form>
   </ng-template>
 
 

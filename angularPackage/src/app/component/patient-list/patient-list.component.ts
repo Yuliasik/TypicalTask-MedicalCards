@@ -15,8 +15,11 @@ export class PatientListComponent implements OnInit {
 
   patients: Patient[];
   idPatientToDelete: number;
-  private eventsSubscription: Subscription;
-  @Input() events: Observable<void>;
+  private deleteSubscription: Subscription;
+  private updateSubscription: Subscription;
+  @Input() deleteEvent: Observable<void>;
+  @Input() updateEvent: Observable<void>;
+
   // @Input() refreshTriger = false;
   // @Output() refreshTriger : EventEmitter<any> = new EventEmitter();
 
@@ -28,55 +31,69 @@ export class PatientListComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.route.params.subscribe(()=>{
-      this.getAllPatients();
-    })
-    this.eventsSubscription = this.events.subscribe(() => {
-      this.getAllPatients();
-    });
 
     await this.getAllPatients();
+    await this.redirect();
 
-    //
-    // await this.route.params.subscribe(data => {
-    //   this.idPatientToDelete = this.deletingService.getPatient();
-    //   if (this.idPatientToDelete) {
-    //     console.log(this.patients);
-    //     // this.patientService.deletePatient(this.idPatientToDelete).subscribe(() => {
-    //     // });
-    //     console.log(this.idPatientToDelete);
-    //     this.deleteSpecificElement(this.idPatientToDelete);
-    //     // this.patientService.findAll().subscribe(data => {
-    //       // this.patients = data;
-    //     // })//.toPromise();
-    //     console.log(this.patients);
-    //   }
-    //
-    //   this.router.navigate(['patients', 'detail', (this.patients[0].id == null ? this.patients[1].id : this.patients[0].id)]);
-    // });
-    // // this.patients = await this.patientService.findAll().toPromise();
-    // await this.router.navigate(['patients', 'detail', this.patients[0].id]);
+    this.route.params.subscribe(() => {
+      this.getAllPatients();
+    })
+
+    this.deleteSubscription = this.deleteEvent.subscribe(() => {
+      this.getAllPatients();
+      this.redirect();
+    });
+
+    this.updateSubscription = this.updateEvent.subscribe((id) => {
+      this.getAllPatients();
+      this.redirectToCurrentPatient(id);
+    });
+
   }
 
   async getAllPatients() {
-    // this.patientService.findAll().subscribe(data => {
-    //   this.patients = data;
-    // });
-    this.patients = await this.patientService.findAll().toPromise();
+     this.patients = await this.patientService.findAll().toPromise();
+  }
+
+  async redirect(){
     await this.router.navigate(['patients', 'detail', (this.patients[0].id)]);
-
   }
 
-  onActivate(reference): void {
-    // console.log(reference)
-    reference.delete.subscribe(() => {
-      // console.log(data);
-      this.getAllPatients();
-    });
+  async redirectToCurrentPatient(id){
+    // const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    // console.log(this.route.snapshot.paramMap.get('id'));
+    await this.router.navigate(['patients', 'detail', (id)]);
   }
 
+  // onActivate(reference): void {
+  //   // console.log(reference)
+  //   reference.delete.subscribe(() => {
+  //     // console.log(data);
+  //     this.getAllPatients();
+  //   });
+  // }
 
-    // deleteSpecificElement(patientId: number) {
+  // onActivate(reference, id: number): void {
+  //   // console.log(reference)
+  //     console.log('zazazaz')
+  //   if (id == -1) {
+  //     reference.delete.subscribe(() => {
+  //       this.getAllPatients(this.patients[0].id);
+  //     });
+  //   }else{
+  //     reference.update.subscribe(() => {
+  //       this.getAllPatients(id);
+  //     });
+  //   }
+  //
+  //     // reference.update.subscribe((data) => {
+  //     //   this.getAllPatients(data.id)
+  //     // })
+  //
+  // }
+
+
+  // deleteSpecificElement(patientId: number) {
   //   this.patients.forEach((patient, index) => {
   //     if (patient.id == this.idPatientToDelete) {
   //       // this.patients.push(this.patients[index]);
