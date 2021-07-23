@@ -17,9 +17,6 @@
     </div>
   </div>
   <div class="body-show-patient" *ngIf="!showUpdateForm; else somename">
-    <!--    <div class="spinner-border text-primary" role="status">-->
-    <!--      <span class="sr-only"> .........Loading...</span>-->
-    <!--    </div>-->
     <div class="information-show-patient">
       <table>
         <tr>
@@ -48,9 +45,7 @@
       <app-comment-list></app-comment-list>
     </div>
   </div>
-  <ng-template #somename>
+  <ng-template #somename class="update-patient-data">
     <app-patient-form (savePatient)="updatePatient($event)" [previousPatient]="patient"></app-patient-form>
   </ng-template>
-
-
 </div>

@@ -2,14 +2,11 @@
 <div class="block-list-patients">
   <div class="list">Patients List</div>
   <div class="patients-container">
-    <ul class="patients">
+    <ul class="patients" *ngIf="patients.length; else empty">
       <li *ngFor="let patient of patients">
-        <!--        [style.display]="patient.isShowed ? 'none' : 'block'"-->
-        <!--        [ngClass]="patient.status"-->
         <a routerLink="patients/detail/{{patient.id}}" routerLinkActive="active">
           <div class="one-patient">
             <div class="full-name">
-              <!--                {{patient.style_display}}-->
               {{patient.firstName}} {{patient.lastName}}
               <div class="date">
                 {{patient.birthday | date: 'd MMMM y'}}
@@ -22,6 +19,11 @@
         </a>
       </li>
     </ul>
+    <ng-template #empty>
+      <div class="empty-list">
+        <span>No patients here!</span>
+      </div>
+    </ng-template>
   </div>
 </div>
 <!--  <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>-->

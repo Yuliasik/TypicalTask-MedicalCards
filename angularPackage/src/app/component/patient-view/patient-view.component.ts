@@ -3,9 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Patient} from "../../model/patient";
 import {PatientService} from "../../service/patient-service.service";
 import * as Dayjs from "dayjs";
-import {CommentListComponent} from "../comment-list/comment-list.component";
-
-// import {DeletingService} from "../../service/deleting-service.service";
 
 @Component({
   selector: 'app-patient-view',
@@ -22,8 +19,6 @@ export class PatientViewComponent implements OnInit {
   patientFirstName: string;
   patientLastName: string;
 
-  // private commentsComponent : CommentListComponent;
-
   constructor(private patientService: PatientService,
               private router: Router,
               private route: ActivatedRoute) {
@@ -37,41 +32,23 @@ export class PatientViewComponent implements OnInit {
   }
 
   getPatient(): void {
-    // console.log(this.route);
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.patientService.getPatient(id).subscribe(data => {
       this.patient = data;
       this.age = Dayjs().diff(Dayjs(this.patient.birthday), "year");
-      // console.log(age);
       this.patientFirstName = this.patient.firstName;
       this.patientLastName = this.patient.lastName;
       this.showUpdateForm = false;
     });
   }
 
-
-  // goToParent():void{
-  //   // this.router.navigateByUrl('/patients')
-  //   this.delete.emit(666);
-  // }
-
   deletePatient(): void {
     this.patientService.deletePatient(this.patient.id).subscribe(() => {
-      this.delete.emit();
+      this.delete.emit(this.patient.id);
     });
-    //   // const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    //   // this.patientService.deletePatient(this.patient.id).subscribe(() => {
-    //   //  this.delete.emit();
-    //   // });
-    //   this.deletingService.setPatient(this.patient.id);
-    //   this.router.navigate(['patients']);
   }
 
   async updatePatient(patient: Patient) {
-    // this.patientService.
-    // console.log(patient)
-    // console.log(patient);
-
     await this.patientService.updatePatient(patient)
       .subscribe(() => {
         this.showUpdateForm = false;
@@ -80,8 +57,4 @@ export class PatientViewComponent implements OnInit {
       });
 
   }
-
-  // goToComments(id: number): void{
-  //   this.router.navigateByUrl(`patients/detail/${id}/comments`)
-  // }
 }
