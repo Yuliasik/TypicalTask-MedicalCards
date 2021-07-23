@@ -1,9 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Patient} from "../../model/patient";
 import {PatientService} from "../../service/patient-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
-// import {DeletingService} from "../../service/deleting-service.service";
-import {optimizeGroupPlayer} from "@angular/animations/browser/src/render/shared";
 import {Observable, Subscription} from "rxjs";
 
 @Component({
@@ -14,11 +12,12 @@ import {Observable, Subscription} from "rxjs";
 export class PatientListComponent implements OnInit {
 
   patients: Patient[] = [];
-  idPatientToDelete: number;
   private deleteSubscription: Subscription;
   private updateSubscription: Subscription;
+  private createSubscription: Subscription;
   @Input() deleteEvent: Observable<void>;
   @Input() updateEvent: Observable<void>;
+  @Input() createEvent: Observable<void>;
 
   constructor(private patientService: PatientService,
               private router: Router,
@@ -44,8 +43,16 @@ export class PatientListComponent implements OnInit {
         this.redirectToNotCurrentPatient(id);
       });
     }
+
     if (this.updateEvent) {
       this.updateSubscription = this.updateEvent.subscribe((id) => {
+        this.getAllPatients();
+        this.redirectToCurrentPatient(id);
+      });
+    }
+
+    if (this.createEvent) {
+      this.createSubscription = this.createEvent.subscribe((id) => {
         this.getAllPatients();
         this.redirectToCurrentPatient(id);
       });

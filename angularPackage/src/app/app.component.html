@@ -16,7 +16,9 @@
   <div class="container-fluid overflow-hidden d-flex container-body">
     <div class="container-list">
       <app-patient-list [deleteEvent]="deleteSubject.asObservable()"
-                        [updateEvent]="updateSubject.asObservable()"></app-patient-list>
+                        [updateEvent]="updateSubject.asObservable()"
+                        [createEvent]="createSubject.asObservable()">
+      </app-patient-list>
     </div>
     <div class="block-outlet">
       <router-outlet (activate)="onActivate($event)"></router-outlet>

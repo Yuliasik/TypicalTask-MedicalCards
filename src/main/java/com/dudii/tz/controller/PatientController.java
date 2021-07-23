@@ -4,6 +4,7 @@ import com.dudii.tz.model.Patient;
 import com.dudii.tz.repository.PatientRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,8 +23,10 @@ public class PatientController {
     }
 
     @PostMapping("/patients")
-    public void addPatient(@RequestBody Patient patient){
+    public long addPatient(@RequestBody Patient patient){
+        patient.setComments(new ArrayList<>());
         patientRepository.save(patient);
+        return patient.getId();
     }
 
     @GetMapping("/patients/{patient_id}")
@@ -38,13 +41,11 @@ public class PatientController {
 
     @DeleteMapping("/patients/{patient_id}")
     public void deletePatientById(@PathVariable(name = "patient_id") Long patient_id){
-//        int size = this.getPatients().size();
         patientRepository.deleteById(patient_id);
     }
 
     @PutMapping("/patients")
     public void updatePatientById(@RequestBody Patient patient){
-        System.out.println(patient);
         Patient oldPatient = patientRepository.findById(patient.getId()).orElse(null);
         if (oldPatient != null){
             oldPatient.setFirstName(patient.getFirstName());

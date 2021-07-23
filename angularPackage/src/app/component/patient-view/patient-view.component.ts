@@ -16,8 +16,8 @@ export class PatientViewComponent implements OnInit {
   showUpdateForm = false;
   @Output() delete: EventEmitter<any> = new EventEmitter();
   @Output() update: EventEmitter<any> = new EventEmitter();
-  patientFirstName: string;
-  patientLastName: string;
+  // patientFirstName: string;
+  // patientLastName: string;
 
   constructor(private patientService: PatientService,
               private router: Router,
@@ -36,8 +36,8 @@ export class PatientViewComponent implements OnInit {
     this.patientService.getPatient(id).subscribe(data => {
       this.patient = data;
       this.age = Dayjs().diff(Dayjs(this.patient.birthday), "year");
-      this.patientFirstName = this.patient.firstName;
-      this.patientLastName = this.patient.lastName;
+      // this.patientFirstName = this.patient.firstName;
+      // this.patientLastName = this.patient.lastName;
       this.showUpdateForm = false;
     });
   }
