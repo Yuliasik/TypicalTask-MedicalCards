@@ -1,21 +1,22 @@
 <div class="block-show-patient" *ngIf="patient">
   <div class="header-show-patient">
-    <div class="full-name">{{patient.firstName}} {{patient.lastName}}</div>
+    <div class="full-name">{{patientFirstName}} {{patientLastName}}</div>
     <div class="age-and-buttons">
       <div class="age">{{this.age}} years old</div>
       <div>
-        <button class="button-show-patient">
+        <button class="button-show-patient" title="Update patient"
+                (click)="showUpdateForm = !showUpdateForm">
           <img class="img-show-patient" src="assets/images/edit.png"><br>
           Update
         </button>
-        <button class="button-show-patient" (click)="deletePatient()">
+        <button class="button-show-patient" title="Delete patient" (click)="deletePatient()">
           <img class="img-show-patient" src="assets/images/delete.png"><br>
           Delete
         </button>
       </div>
     </div>
   </div>
-  <div class="body-show-patient">
+  <div class="body-show-patient" *ngIf="!showUpdateForm; else somename">
     <!--    <div class="spinner-border text-primary" role="status">-->
     <!--      <span class="sr-only"> .........Loading...</span>-->
     <!--    </div>-->
@@ -47,5 +48,9 @@
       <app-comment-list></app-comment-list>
     </div>
   </div>
+  <ng-template #somename>
+    <app-patient-form (savePatient)="updatePatient($event)" [patient]="patient"></app-patient-form>
+  </ng-template>
+
 
 </div>

@@ -4,9 +4,12 @@
   <div class="patients-container">
     <ul class="patients">
       <li *ngFor="let patient of patients">
+        <!--        [style.display]="patient.isShowed ? 'none' : 'block'"-->
+        <!--        [ngClass]="patient.status"-->
         <a routerLink="patients/detail/{{patient.id}}" routerLinkActive="active">
           <div class="one-patient">
             <div class="full-name">
+              <!--                {{patient.style_display}}-->
               {{patient.firstName}} {{patient.lastName}}
               <div class="date">
                 {{patient.birthday | date: 'd MMMM y'}}
