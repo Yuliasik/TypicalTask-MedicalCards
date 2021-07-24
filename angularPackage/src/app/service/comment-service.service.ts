@@ -7,25 +7,22 @@ import {Comment} from "../model/comment";
 export class CommentService {
 
   private patientsUrl: string;
+  private comentsUrl: string;
 
   constructor(private http: HttpClient) {
     this.patientsUrl = 'http://localhost:9091/patients/detail';
+    this.comentsUrl = 'http://localhost:9091/comments';
   }
 
   public getCommentByPatientId(id: number): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${this.patientsUrl}/${id}/comments`);
   }
 
-  public addComment(comment: Comment, id: number) {
-    return this.http.post(`${this.patientsUrl}/${id}/comments`, comment);
+  public addComment(comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(`${this.comentsUrl}/add`, comment);
   }
 
-  public updateComment(comment: Comment, id: number) {
-    return this.http.put(`${this.patientsUrl}/${id}/comments`, comment);
+  public updateComment(comment: Comment) {
+    return this.http.put(`${this.comentsUrl}/update`, comment);
   }
-
-  public getAvailableId(): Observable<number>{
-    return this.http.get<number>(`${this.patientsUrl}/comments/available_id`);
-  }
-
 }

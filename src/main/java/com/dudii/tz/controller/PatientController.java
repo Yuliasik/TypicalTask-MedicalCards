@@ -2,61 +2,48 @@ package com.dudii.tz.controller;
 
 import com.dudii.tz.model.Patient;
 import com.dudii.tz.repository.PatientRepository;
+import com.dudii.tz.service.PatientService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class PatientController {
-    private final PatientRepository patientRepository;
 
-    public PatientController(PatientRepository patientRepository) {
-        this.patientRepository = patientRepository;
+    private final PatientService patientService;
+
+    public PatientController(PatientService patientService) {
+        this.patientService = patientService;
     }
 
     @GetMapping("/patients")
-    public List<Patient> getPatients(){
-        return (List<Patient>) patientRepository.findAll();
+    public List<Patient> getPatients() {
+        return patientService.getAll();
     }
 
     @PostMapping("/patients")
-    public long addPatient(@RequestBody Patient patient){
-//        patient.setComments(new ArrayList<>());
-        patientRepository.save(patient);
-        return patient.getId();
+    public long addPatient(@RequestBody Patient patient) {
+        return patientService.addPatient(patient);
     }
 
     @GetMapping("/patients/{patient_id}")
-    public Patient getPatientById(@PathVariable(name = "patient_id") Long patient_id){
-         return patientRepository.findById(patient_id).orElse(null);
+    public Patient getPatientById(@PathVariable(name = "patient_id") Long patient_id) {
+        return patientService.getPatientById(patient_id);
     }
 
     @GetMapping("/patients/byname/{name}")
-    public List<Patient> getPatientByName(@PathVariable(name = "name") String name){
-        return patientRepository.findAllByFirstNameIsContainingIgnoreCaseOrLastNameContainingIgnoreCase(name, name);
+    public List<Patient> getPatientByName(@PathVariable(name = "name") String name) {
+        return patientService.getPatientByTemplateName(name);
     }
 
     @DeleteMapping("/patients/{patient_id}")
-    public void deletePatientById(@PathVariable(name = "patient_id") Long patient_id){
-        patientRepository.deleteById(patient_id);
+    public void deletePatientById(@PathVariable(name = "patient_id") Long patient_id) {
+        patientService.deletePatientById(patient_id);
     }
 
     @PutMapping("/patients")
-    public void updatePatientById(@RequestBody Patient patient){
-        Patient oldPatient = patientRepository.findById(patient.getId()).orElse(null);
-        if (oldPatient != null){
-            oldPatient.setFirstName(patient.getFirstName());
-            oldPatient.setLastName(patient.getLastName());
-            oldPatient.setBirthday(patient.getBirthday());
-            oldPatient.setCountry(patient.getCountry());
-            oldPatient.setState(patient.getState());
-            oldPatient.setAddress(patient.getAddress());
-            oldPatient.setSex(patient.getSex());
-
-            patientRepository.save(oldPatient);
-        }
+    public void updatePatientById(@RequestBody Patient patient) {
+        patientService.updatePatientById(patient);
     }
 }

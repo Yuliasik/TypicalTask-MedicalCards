@@ -13,6 +13,4 @@ public interface CommentRepository extends CrudRepository<Comment, Long> {
 
     List<Comment> findAllByPatient_IdEqualsOrderByDateCreatingAsc (@Param("patient_id") long patientId);
 
-    @Query("SELECT MAX(comment.id) FROM Comment comment")
-    Long findMaxId();
 }

@@ -32,17 +32,7 @@ export class CommentListComponent implements OnInit {
     });
   }
 
-  onActivate(reference): void{
-    console.log("onActivate");
-    reference.save.subscribe(() => {
-      this.getAllByPatientId()
-    });
-  }
-
-  save(commentToSave){
-    this.commentService.getAvailableId().subscribe(data => {
-      commentToSave.id = data;
-    })
+  async save(commentToSave){
     commentToSave.dateCreating = new Date();
     this.comments.push(commentToSave);
   }

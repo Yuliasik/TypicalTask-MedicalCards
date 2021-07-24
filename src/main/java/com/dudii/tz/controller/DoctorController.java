@@ -1,8 +1,8 @@
 package com.dudii.tz.controller;
 
 import com.dudii.tz.model.Doctor;
-import com.dudii.tz.model.Patient;
-import com.dudii.tz.repository.DoctorRepository;
+import com.dudii.tz.service.DoctorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,25 +10,26 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class DoctorController {
-    private final DoctorRepository doctorRepository;
 
-    public DoctorController(DoctorRepository doctorRepository) {
-        this.doctorRepository = doctorRepository;
+    private final DoctorService doctorService;
+
+    @Autowired
+    public DoctorController(DoctorService doctorService) {
+        this.doctorService = doctorService;
     }
 
     @GetMapping("/doctors")
     public List<Doctor> getDoctors() {
-        return (List<Doctor>) doctorRepository.findAll();
+        return doctorService.getDoctors();
     }
 
     @PostMapping("/doctors")
     public void addDoctor(@RequestBody Doctor doctor) {
-        System.out.println(doctor);
-        doctorRepository.save(doctor);
+        doctorService.addDoctor(doctor);
     }
 
     @GetMapping("/doctors/{doctor_id}")
-    public Doctor getDoctorById(@PathVariable(name = "doctor_id") Long doctor_id){
-        return doctorRepository.findById(doctor_id).orElse(null);
+    public Doctor getDoctorById(@PathVariable(name = "doctor_id") Long doctor_id) {
+        return doctorService.getDoctorById(doctor_id);
     }
 }
