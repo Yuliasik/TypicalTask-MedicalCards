@@ -1,0 +1,10 @@
+spring:
+  freemarker:
+    suffix: ".ftl"
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/MedicalCards}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:Yulichka18}
+
+cross-origin-url: ${CROSS_URL:http://localhost:4200}

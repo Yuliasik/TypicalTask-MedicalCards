@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Patient} from "../model/patient";
 import {of} from "rxjs/observable/of";
 import {tap} from "rxjs/operators";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class PatientService {
@@ -11,7 +12,7 @@ export class PatientService {
   private patientsUrl: string;
 
   constructor(private http: HttpClient) {
-    this.patientsUrl = 'http://localhost:9091/patients';
+    this.patientsUrl = environment.apiUrl + 'patients';
   }
 
   public findAll(): Observable<Patient[]> {

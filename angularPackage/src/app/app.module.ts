@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {PatientListComponent} from './component/patient-list/patient-list.component';
 import {AppRoutingModule} from "./module/app-routing/app-routing.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {PatientService} from "./service/patient-service.service";
 import {CommentService} from "./service/comment-service.service";
 import {PatientViewComponent} from './component/patient-view/patient-view.component';
@@ -18,6 +18,8 @@ import {PatientAddComponent} from './component/patient-add/patient-add.component
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {PatientFormComponent} from './component/patient-form/patient-form.component';
+import {environment} from "../environments/environment";
+import {BaseUrlInterceptor} from "./BaseUrlInterceptor";
 
 declare global {
   type unknown = any
@@ -46,7 +48,13 @@ declare global {
   ],
   providers: [PatientService,
     CommentService,
-    DoctorService],
+    DoctorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BaseUrlInterceptor,
+      multi: true,
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

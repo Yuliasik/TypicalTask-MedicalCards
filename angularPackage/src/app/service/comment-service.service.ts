@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Comment} from "../model/comment";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class CommentService {
@@ -10,8 +11,8 @@ export class CommentService {
   private comentsUrl: string;
 
   constructor(private http: HttpClient) {
-    this.patientsUrl = 'http://localhost:9091/patients/detail';
-    this.comentsUrl = 'http://localhost:9091/comments';
+    this.patientsUrl = environment.apiUrl + 'patients/detail';
+    this.comentsUrl = environment.apiUrl + 'comments';
   }
 
   public getCommentByPatientId(id: number): Observable<Comment[]> {

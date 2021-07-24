@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: "https://dudii-medical-cards.herokuapp.com/"
 };
