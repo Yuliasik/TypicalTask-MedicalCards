@@ -10,5 +10,5 @@ public interface CommentService {
     void updateCommentById(Comment comment);
 
     List<Comment> getAllByPatientId(long patientId);
-    
+
 }

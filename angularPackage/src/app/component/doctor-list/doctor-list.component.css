@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: start;
 }
+
 .header-doctor {
   display: flex;
   align-items: center;
@@ -12,23 +13,28 @@
   border-bottom: 5px solid #01234c;
   font-size: 30px;
 }
+
 .body-doctor {
   display: flex;
   flex-direction: row;
   padding: 20px;
   height: calc(100% - 80px);
 }
+
 .add-doctor {
   width: 60%;
 }
+
 .block-doctors-list {
   border-left: 3px solid #01234c;
   width: 40%;
 }
-.block-text{
+
+.block-text {
   font-size: 30px;
   margin-left: 40px;
 }
+
 .one-doctor {
   display: flex;
   flex-direction: row;
@@ -42,13 +48,15 @@
   width: 70%;
   margin-top: 15px;
 }
-.doctors{
+
+.doctors {
   display: block;
   list-style-type: none;
   height: calc(100% - 30px);
   overflow-y: auto;
 }
-.img-doctor{
+
+.img-doctor {
   width: 23px;
   margin-right: 5px;
 }

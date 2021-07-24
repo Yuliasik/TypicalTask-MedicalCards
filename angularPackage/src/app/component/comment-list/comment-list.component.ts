@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Comment} from "../../model/comment";
 import {CommentService} from "../../service/comment-service.service";
@@ -15,7 +15,8 @@ export class CommentListComponent implements OnInit {
 
   constructor(private commentService: CommentService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(() => {
@@ -23,16 +24,14 @@ export class CommentListComponent implements OnInit {
     })
   }
 
-  getAllByPatientId(): void{
+  getAllByPatientId(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.commentService.getCommentByPatientId(id).subscribe(data => {
       this.comments = data;
-      // console.log(this.comments);
-      // this.router.navigateByUrl(`patients/detail/${id}`)
     });
   }
 
-  async save(commentToSave){
+  async save(commentToSave) {
     commentToSave.dateCreating = new Date();
     this.comments.push(commentToSave);
   }

@@ -6,7 +6,8 @@ public enum Sex {
     MALE("MALE"), FEMALE("FEMALE");
 
     String sex;
-    Sex(String sex){
+
+    Sex(String sex) {
         this.sex = sex.toUpperCase(Locale.ROOT);
     }
 }

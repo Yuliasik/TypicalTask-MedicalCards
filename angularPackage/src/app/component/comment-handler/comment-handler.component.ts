@@ -37,10 +37,6 @@ export class CommentHandlerComponent implements OnInit {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.comment = changes.comment.currentValue;
-  }
-
   async saveComment() {
     if (this.comment.id) {
       await this.commentService.updateComment(this.comment).subscribe(() => {

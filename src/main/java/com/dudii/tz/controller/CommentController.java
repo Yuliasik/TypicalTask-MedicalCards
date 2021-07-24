@@ -1,15 +1,10 @@
 package com.dudii.tz.controller;
 
 import com.dudii.tz.model.Comment;
-import com.dudii.tz.repository.CommentRepository;
-import com.dudii.tz.repository.DoctorRepository;
-import com.dudii.tz.repository.PatientRepository;
 import com.dudii.tz.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -37,5 +32,4 @@ public class CommentController {
     public List<Comment> getAllByPatientId(@PathVariable(name = "patient_id") Long patient_id) {
         return commentService.getAllByPatientId(patient_id);
     }
-
 }

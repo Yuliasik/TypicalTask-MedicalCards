@@ -1,7 +1,6 @@
 package com.dudii.tz.controller;
 
 import com.dudii.tz.model.Patient;
-import com.dudii.tz.repository.PatientRepository;
 import com.dudii.tz.service.PatientService;
 import org.springframework.web.bind.annotation.*;
 

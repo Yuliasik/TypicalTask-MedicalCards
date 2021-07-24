@@ -27,7 +27,7 @@ export class AppComponent {
         this.updateSubject.next(param);
       });
     }
-    if(reference.create){
+    if (reference.create) {
       reference.create.subscribe((param) => {
         this.createSubject.next(param);
       });

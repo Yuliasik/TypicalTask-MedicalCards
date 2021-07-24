@@ -26,7 +26,6 @@ export class DoctorAddComponent implements OnInit {
   }
 
   addNewDoctor() {
-    // await this.doctorService.addNewDoctor(this.doctor);
     this.save.emit(this.doctor);
     this.cancelDoctor();
   }
@@ -38,7 +37,8 @@ export class DoctorAddComponent implements OnInit {
   }
 
   changeForm() {
-    if (this.doctor.firstName.match(/^[A-Z][a-z]+(-[A-Z][a-z]+)?$/) && this.doctor.lastName.match(/^[A-Z][a-z]+(-[A-Z][a-z]+)?$/)) {
+    if (this.doctor.firstName.match(/^[A-Z][a-z]+(-[A-Z][a-z]+)?$/) &&
+      this.doctor.lastName.match(/^[A-Z][a-z]+(-[A-Z][a-z]+)?$/)) {
       this.isSaveDisabled = false;
       this.titleSave = 'Save doctor';
     } else {

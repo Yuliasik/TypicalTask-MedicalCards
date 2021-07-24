@@ -1,5 +1,4 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {DoctorService} from "../../service/doctor-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PatientService} from "../../service/patient-service.service";
 import {Patient} from "../../model/patient";
@@ -13,8 +12,6 @@ export class PatientAddComponent implements OnInit {
 
   patient: Patient = new Patient();
   @Output() create: EventEmitter<any> = new EventEmitter();
-  // isSaveDisabled: boolean = true;
-  // titleSave: string;
 
   constructor(private patientService: PatientService,
               private router: Router,
@@ -25,13 +22,10 @@ export class PatientAddComponent implements OnInit {
     this.patient = new Patient();
   }
 
-  addPatient(patient: Patient){
-    console.log(patient);
+  addPatient(patient: Patient) {
     this.patientService.addNewPatient(patient)
-      .subscribe((id)=>{
+      .subscribe((id) => {
         this.create.emit(id);
       })
   }
-
-
 }

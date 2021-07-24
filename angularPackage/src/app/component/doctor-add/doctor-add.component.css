@@ -1,30 +1,6 @@
-/*.block-doctor {*/
-/*  !*background: #3dd5f3;*!*/
-/*  height: 100%;*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*}*/
-
-/*.header-doctor {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  height: 80px;*/
-/*  border-bottom: 5px solid #01234c;*/
-/*  font-size: 30px;*/
-/*}*/
-
-/*.body-doctor {*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*  margin: 20px;*/
-/*  height: 100%;*/
-/*}*/
-
 .add-doctor {
   display: flex;
   flex-direction: column;
-  /*justify-content: center;*/
   align-items: center;
   width: 100%;
 }
@@ -32,10 +8,7 @@
 .text-doctor {
   margin-bottom: 10px;
   font-size: 30px;
-  /*margin-left: 40px;*/
   text-align: center;
-  /*background: #20c997;*/
-  /*width: 100%;*/
 }
 
 .block-input-doctor {
@@ -43,7 +16,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*border: 2px solid #01234c;*/
   padding: 20px 20px 20px 20px;
   width: 80%;
 }
@@ -98,7 +70,3 @@
   box-shadow: 0 3px 6px #06347afa;
   transition: 0.5s;
 }
-/*.block-doctors-list {*/
-/*  border-left: 3px solid #01234c;*/
-/*  width: 40%;*/
-/*}*/

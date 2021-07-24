@@ -52,26 +52,6 @@ export class PatientFormComponent implements OnInit {
     return newPatient;
   }
 
-  // addNewPatient() {
-  //   // await this.doctorService.addNewDoctor(this.doctor);
-  //   // this.save.emit(this.doctor);
-  //   // this.cancelDoctor();
-  // }
-
-  async funcSavePatient() {
-    console.log(this.patient);
-    if (this.patient.id) {
-      // await this.patientService.updatePatient(this.patient, this.patient.id)
-      //   .subscribe(() => {});
-    } else{
-      // this.savePatient.emit(this.patient);
-      // this.patient.id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-      // await this.patientService.addNewPatient(this.patient).subscribe(() => {});
-    }
-
-  }
-
-
   cancelPatient() {
     this.patient = this.clonePatient(this.previousPatient);
     this.isSaveDisabled = true;
@@ -80,7 +60,6 @@ export class PatientFormComponent implements OnInit {
   }
 
   changeForm() {
-    console.log(this.patient)
     this.funcCheckSex();
     if (this.patient.firstName.match(/^[A-Z][a-z]+(-[A-Z][a-z]+)?$/) &&
       this.patient.lastName.match(/^[A-Z][a-z]+(-[A-Z][a-z]+)?$/) &&
@@ -91,7 +70,6 @@ export class PatientFormComponent implements OnInit {
       this.patient.address) {
       this.isSaveDisabled = false;
       this.titleSave = 'Save patient';
-
     } else {
       this.isSaveDisabled = true;
       this.titleSave = 'Not all fields valid or inputted';

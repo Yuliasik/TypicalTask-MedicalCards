@@ -23,7 +23,6 @@ export class PatientService {
   }
 
   public deletePatient(id: number) {
-    // console.log(id)
     return this.http.delete(`${this.patientsUrl}/${id}`);
   }
 
@@ -36,16 +35,10 @@ export class PatientService {
   }
 
   searchPatient(term: string): Observable<Patient[]> {
-    console.log('term='+term);
     if (!term.trim()) {
-      // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Patient[]>(`${this.patientsUrl}/byname/${term}`).pipe(
-      tap(x => x.length ?
-        console.log(`found heroes matching "${term}"`) :
-        console.log(`no heroes matching "${term}"`))
-    );
+    return this.http.get<Patient[]>(`${this.patientsUrl}/byname/${term}`);
   }
 
 

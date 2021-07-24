@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Doctor} from "../../model/doctor";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DoctorService} from "../../service/doctor-service.service";
-import {Comment} from "../../model/comment";
 
 @Component({
   selector: 'app-doctor-list',
@@ -31,8 +30,9 @@ export class DoctorListComponent implements OnInit {
     });
   }
 
-  save(doctorToAdd){
+  save(doctorToAdd) {
     this.doctors.push(doctorToAdd);
-    this.doctorService.addNewDoctor(doctorToAdd).subscribe(()=>{});
+    this.doctorService.addNewDoctor(doctorToAdd).subscribe(() => {
+    });
   }
 }

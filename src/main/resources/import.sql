@@ -18,6 +18,13 @@ INSERT INTO doctors(id, first_name, last_name) VALUES (6, 'Hamnet', 'Amery');
 INSERT INTO doctors(id, first_name, last_name) VALUES (7, 'Norbert', 'Meade');
 INSERT INTO doctors(id, first_name, last_name) VALUES (8, 'Benton', 'Reilly');
 INSERT INTO doctors(id, first_name, last_name) VALUES (9, 'Sidney', 'Landen');
+INSERT INTO doctors(id, first_name, last_name) VALUES (10, 'Alana', 'Moores');
+INSERT INTO doctors(id, first_name, last_name) VALUES (11, 'Nikki', 'Patterson');
+INSERT INTO doctors(id, first_name, last_name) VALUES (12, 'Debi', 'Walters');
+INSERT INTO doctors(id, first_name, last_name) VALUES (13, 'Dan', 'Quickley');
+INSERT INTO doctors(id, first_name, last_name) VALUES (14, 'Paula', 'Pope');
+INSERT INTO doctors(id, first_name, last_name) VALUES (15, 'Matty', 'Smith');
+
 
 INSERT INTO comments (id, date_creating, text, id_doctor, id_patient) VALUES (1, '2020-09-16 14:15:39.16246', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 1, 1);
 INSERT INTO comments (id, date_creating, text, id_doctor, id_patient) VALUES (2, '2020-10-16 19:25:19.16246', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.', 8, 1);
