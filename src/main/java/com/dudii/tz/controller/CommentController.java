@@ -24,21 +24,11 @@ public class CommentController {
         this.doctorRepository = doctorRepository;
     }
 
-//    @GetMapping("/comments")
-//    public List<Comment> getComments(){
-//        return (List<Comment>) commentRepository.findAll();
-//    }
-
     @PostMapping("patients/detail/{patient_id}/comments")
     public void addComment(@RequestBody Comment comment, @Param("patient_id") Long patient_id){
-//        System.out.println("new");
-//        System.out.println(patient_id);
-//        System.out.println("---------");
-//        System.out.println(comment);
         comment.setDateCreating(LocalDateTime.now());
         comment.setPatient(patientRepository.findById(comment.getPatient().getId()).get());
         comment.setDoctor(doctorRepository.findById(comment.getDoctor().getId()).get());
-//        System.out.println(comment);
         commentRepository.save(comment);
     }
 
@@ -54,13 +44,12 @@ public class CommentController {
 
     @GetMapping("patients/detail/{patient_id}/comments")
     public List<Comment> getAllByPatientId (@PathVariable(name = "patient_id") Long patient_id){
-        return commentRepository.getAllByPatientId(patient_id);
+        return commentRepository.findAllByPatient_IdEqualsOrderByDateCreatingAsc(patient_id);
     }
 
     @GetMapping("patients/detail/comments/available_id")
     public Long getAvailableId (){
         return commentRepository.findMaxId() + 1;
     }
-
 
 }

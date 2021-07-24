@@ -7,11 +7,9 @@ import {Comment} from "../model/comment";
 export class CommentService {
 
   private patientsUrl: string;
-  // private commentUrl: string;
 
   constructor(private http: HttpClient) {
     this.patientsUrl = 'http://localhost:9091/patients/detail';
-    // this.commentUrl = 'http://localhost:9091/comments';
   }
 
   public getCommentByPatientId(id: number): Observable<Comment[]> {

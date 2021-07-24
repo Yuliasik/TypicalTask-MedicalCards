@@ -24,7 +24,7 @@ public class PatientController {
 
     @PostMapping("/patients")
     public long addPatient(@RequestBody Patient patient){
-        patient.setComments(new ArrayList<>());
+//        patient.setComments(new ArrayList<>());
         patientRepository.save(patient);
         return patient.getId();
     }
@@ -36,7 +36,7 @@ public class PatientController {
 
     @GetMapping("/patients/byname/{name}")
     public List<Patient> getPatientByName(@PathVariable(name = "name") String name){
-        return patientRepository.findAllByName(name.toUpperCase(Locale.ROOT));
+        return patientRepository.findAllByFirstNameIsContainingIgnoreCaseOrLastNameContainingIgnoreCase(name, name);
     }
 
     @DeleteMapping("/patients/{patient_id}")

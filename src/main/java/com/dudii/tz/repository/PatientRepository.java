@@ -11,8 +11,5 @@ import java.util.List;
 @Repository
 public interface PatientRepository extends CrudRepository<Patient, Long> {
 
-    @Query("SELECT patient " +
-            "FROM Patient patient " +
-            "WHERE UPPER(patient.firstName) LIKE %:name% OR UPPER(patient.lastName) LIKE %:name%")
-    public List<Patient> findAllByName(@Param("name") String name);
+    public List<Patient> findAllByFirstNameIsContainingIgnoreCaseOrLastNameContainingIgnoreCase(String infixFirstName, String infixLastName);
 }

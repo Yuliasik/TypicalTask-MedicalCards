@@ -11,11 +11,7 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends CrudRepository<Comment, Long> {
 
-    @Query("SELECT comment " +
-            "FROM Comment comment " +
-            "WHERE comment.patient.id =:patient_id " +
-            "ORDER BY comment.dateCreating ASC")
-    List<Comment> getAllByPatientId (@Param("patient_id") long patientId);
+    List<Comment> findAllByPatient_IdEqualsOrderByDateCreatingAsc (@Param("patient_id") long patientId);
 
     @Query("SELECT MAX(comment.id) FROM Comment comment")
     Long findMaxId();
