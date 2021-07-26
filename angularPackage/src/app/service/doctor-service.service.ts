@@ -10,7 +10,7 @@ export class DoctorService {
   private doctorsUrl: string;
 
   constructor(private http: HttpClient) {
-    this.doctorsUrl = environment.apiUrl + 'doctors';
+    this.doctorsUrl = 'doctors';
   }
 
   public findAllDoctors(): Observable<Doctor[]> {

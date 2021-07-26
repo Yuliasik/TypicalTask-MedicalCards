@@ -4,11 +4,11 @@ package com.dudii.tz.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@PropertySource("classpath:/application.yaml")
 public class WebConfig implements WebMvcConfigurer {
 
     @Value("${cross-origin-url}")
@@ -17,7 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins("https://dudii-medical-cards.herokuapp.com/")
+                .allowedOrigins(corsURL)
                 .allowedMethods("GET", "POST","PUT", "DELETE");
     }
 

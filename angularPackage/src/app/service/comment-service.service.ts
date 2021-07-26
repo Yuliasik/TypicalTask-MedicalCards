@@ -11,8 +11,8 @@ export class CommentService {
   private comentsUrl: string;
 
   constructor(private http: HttpClient) {
-    this.patientsUrl = environment.apiUrl + 'patients/detail';
-    this.comentsUrl = environment.apiUrl + 'comments';
+    this.patientsUrl = 'patients/detail';
+    this.comentsUrl = 'comments';
   }
 
   public getCommentByPatientId(id: number): Observable<Comment[]> {

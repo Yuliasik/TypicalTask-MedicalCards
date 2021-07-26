@@ -12,7 +12,7 @@ export class PatientService {
   private patientsUrl: string;
 
   constructor(private http: HttpClient) {
-    this.patientsUrl = environment.apiUrl + 'patients';
+    this.patientsUrl = 'patients';
   }
 
   public findAll(): Observable<Patient[]> {
